@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,12 +16,151 @@ import android.widget.Toast;
 
 
 public class Scientific extends ActionBarActivity {
-
+    EditText et;
+    Button butdel, butsin, butcos, buttan, buti, butln, butlog, butpi,
+            bute, butper, butfact, butsqr, butpwr, butlp, butrp;
+    float num1=0;
+    float num2=0;
+    double whatever1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scientific);
-        Intent intent = getIntent();
+        et = (EditText) findViewById(R.id.editText);
+        // Intent intent = getIntent();
+        String score = getIntent().getStringExtra("score");
+        et.setText(score);
+        butdel = (Button) findViewById(R.id.butdel);
+        butsin = (Button) findViewById(R.id.butsin);
+        butcos = (Button) findViewById(R.id.butcos);
+        buttan = (Button) findViewById(R.id.buttan);
+        buti = (Button) findViewById(R.id.buti);
+        butln = (Button) findViewById(R.id.butln);
+        butlog = (Button) findViewById(R.id.butlog);
+        butpi = (Button) findViewById(R.id.butpi);
+        bute = (Button) findViewById(R.id.bute);
+        butper = (Button) findViewById(R.id.butper);
+        butfact = (Button) findViewById(R.id.butfact);
+        butsqr = (Button) findViewById(R.id.butsqr);
+        butpwr = (Button) findViewById(R.id.butpwr);
+        butlp = (Button) findViewById(R.id.butlp);
+        butrp = (Button) findViewById(R.id.butrp);
+
+        butdel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et.setText("");
+            }
+        });
+
+        butsin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                Double yass = Double.valueOf(num1);
+                whatever1 = Math.sin(yass);
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+        butcos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                Double yass = Double.valueOf(num1);
+                whatever1 = Math.cos(yass);
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+        buttan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                Double yass = Double.valueOf(num1);
+                whatever1 = Math.tan(yass);
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+        buti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String blah = et.getText().toString();
+                et.setText(blah + "i");
+            }
+        });
+
+        butln.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                whatever1 = Math.log(num1);
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+        butlog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                whatever1 = Math.log10(num1);
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+        butpi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //num1 = Float.parseFloat(et.getText().toString());
+                whatever1 = Math.PI;
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+        bute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                Double yass = Double.valueOf(num1);
+                whatever1 = Math.exp(num1);
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+        butfact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                et.setText(Double.toString(calcFactorial()));
+            }
+        });
+
+        butsqr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num1 = Float.parseFloat(et.getText().toString());
+                whatever1 = Math.sqrt(num1);
+                et.setText(Double.toString(whatever1));
+            }
+        });
+
+    }
+
+
+    private long calcFactorial() {
+
+        long factorial = 1;
+        try {
+            factorial = Long.parseLong(et.getText().toString());
+            for(long i=factorial-1; i>0; i--){
+                factorial = i * factorial;
+            }
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Incorrect Input", Toast.LENGTH_LONG).show();
+        } finally {}
+
+        return factorial;
     }
 
 
@@ -54,9 +194,9 @@ public class Scientific extends ActionBarActivity {
         }
 
         if(id == R.id.Basic){
+            String value = et.getText().toString();
             Intent intent = new Intent(this,MainActivity.class);
-            //intent.putExtra("score", 99);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.putExtra("score", value);
             startActivity(intent);
             Toast.makeText(this, "Switched to Basic!", Toast.LENGTH_LONG).show();
         }

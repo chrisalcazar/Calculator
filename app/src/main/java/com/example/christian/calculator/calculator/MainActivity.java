@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
     EditText et;
-    Button butdel,but7,but8,but9,butdiv,but4,but5,but6,butmul,but1,but2,but3,butsub,butdec,but0,buteq,butadd;
+    Button butdel,but7,but8,but9,butdiv,but4,but5,but6,
+            butmul,but1,but2,but3,butsub,butdec,but0,buteq,butadd;
     float num1=0;
     float num2=0;
     String operator;
@@ -27,6 +28,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         et = (EditText) findViewById(R.id.editText);
+        // Intent intent = getIntent();
+        String score = getIntent().getStringExtra("score");
+        et.setText(score);
         butdel=(Button) findViewById(R.id.butdel);
         but7=(Button) findViewById(R.id.but7);
         but8=(Button) findViewById(R.id.but8);
@@ -209,13 +213,13 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    public static void disableSoftInputFromAppearing(EditText editText) {
+    public static void disableSoftInputFromAppearing(EditText et) {
         if (Build.VERSION.SDK_INT >= 11) {
-            editText.setRawInputType(InputType.TYPE_CLASS_TEXT);
-            editText.setTextIsSelectable(true);
+            et.setRawInputType(InputType.TYPE_CLASS_TEXT);
+            et.setTextIsSelectable(true);
         } else {
-            editText.setRawInputType(InputType.TYPE_NULL);
-            editText.setFocusable(true);
+            et.setRawInputType(InputType.TYPE_NULL);
+            et.setFocusable(true);
         }
     }
 
@@ -232,9 +236,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if(id == R.id.Scientific){
+            String value = et.getText().toString();
             Intent intent = new Intent(this,Scientific.class);
-            //intent.putExtra("score", 99);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            intent.putExtra("score", value);
             startActivity(intent);
             Toast.makeText(this, "Switched to Scientific!", Toast.LENGTH_LONG).show();
         }
