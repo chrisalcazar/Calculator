@@ -56,7 +56,11 @@ public class Scientific extends ActionBarActivity {
         butsin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 Double yass = Double.valueOf(num1);
                 whatever1 = Math.sin(yass);
                 et.setText(Double.toString(whatever1));
@@ -66,7 +70,11 @@ public class Scientific extends ActionBarActivity {
         butcos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 Double yass = Double.valueOf(num1);
                 whatever1 = Math.cos(yass);
                 et.setText(Double.toString(whatever1));
@@ -76,7 +84,11 @@ public class Scientific extends ActionBarActivity {
         buttan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 Double yass = Double.valueOf(num1);
                 whatever1 = Math.tan(yass);
                 et.setText(Double.toString(whatever1));
@@ -94,7 +106,11 @@ public class Scientific extends ActionBarActivity {
         butln.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 whatever1 = Math.log(num1);
                 et.setText(Double.toString(whatever1));
             }
@@ -103,7 +119,11 @@ public class Scientific extends ActionBarActivity {
         butlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 whatever1 = Math.log10(num1);
                 et.setText(Double.toString(whatever1));
             }
@@ -112,7 +132,6 @@ public class Scientific extends ActionBarActivity {
         butpi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //num1 = Float.parseFloat(et.getText().toString());
                 whatever1 = Math.PI;
                 et.setText(Double.toString(whatever1));
             }
@@ -121,7 +140,11 @@ public class Scientific extends ActionBarActivity {
         bute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 Double yass = Double.valueOf(num1);
                 whatever1 = Math.exp(num1);
                 et.setText(Double.toString(whatever1));
@@ -131,7 +154,11 @@ public class Scientific extends ActionBarActivity {
         butfact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 et.setText(Double.toString(calcFactorial()));
             }
         });
@@ -139,7 +166,11 @@ public class Scientific extends ActionBarActivity {
         butsqr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 whatever1 = Math.sqrt(num1);
                 et.setText(Double.toString(whatever1));
             }

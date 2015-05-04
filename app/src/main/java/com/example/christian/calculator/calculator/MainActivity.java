@@ -19,7 +19,7 @@ public class MainActivity extends ActionBarActivity {
             butmul,but1,but2,but3,butsub,butdec,but0,buteq,butadd;
     float num1=0;
     float num2=0;
-    String operator;
+    String operator = "";
     float whatever1, whatever2;
 
     @Override
@@ -137,7 +137,11 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
             operator = "+";
-            num1 = Float.parseFloat(et.getText().toString());
+            if(et.getText().toString().trim().length() > 0){
+                num1 = Float.parseFloat(et.getText().toString());
+            }else {
+                Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+            }
             whatever1 = num1;
             et.setText("");
             }
@@ -147,7 +151,11 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 operator = "-";
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 whatever1 = num1;
                 et.setText("");
             }
@@ -157,7 +165,11 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 operator = "*";
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 whatever1 = num1;
                 et.setText("");
             }
@@ -167,7 +179,11 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 operator = "/";
-                num1 = Float.parseFloat(et.getText().toString());
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
                 whatever1 = num1;
                 et.setText("");
             }
@@ -176,34 +192,40 @@ public class MainActivity extends ActionBarActivity {
         buteq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               doIt();
+               if(operator.equals("")){
+                   Toast.makeText(getApplicationContext(), "No Operation", Toast.LENGTH_LONG).show();
+               }else {
+                   doIt();
+               }
             }
         });
 
     }
 
-    public void doIt(){
-        if (operator.equals("+")){
+    public void doIt() {
+
+        if (operator.equals("+")) {
             num2 = Float.parseFloat(et.getText().toString());
             whatever2 = num2 + whatever1;
             et.setText(Float.toString(whatever2));
         }
-        if (operator.equals("-")){
+        if (operator.equals("-")) {
             num2 = Float.parseFloat(et.getText().toString());
             whatever2 = whatever1 - num2;
             et.setText(Float.toString(whatever2));
         }
-        if (operator.equals("*")){
+        if (operator.equals("*")) {
             num2 = Float.parseFloat(et.getText().toString());
             whatever2 = whatever1 * num2;
             et.setText(Float.toString(whatever2));
         }
-        if (operator.equals("/")){
+        if (operator.equals("/")) {
             num2 = Float.parseFloat(et.getText().toString());
-            whatever2 = whatever1/num2;
+            whatever2 = whatever1 / num2;
             et.setText(Float.toString(whatever2));
         }
     }
+
 
 
     @Override
