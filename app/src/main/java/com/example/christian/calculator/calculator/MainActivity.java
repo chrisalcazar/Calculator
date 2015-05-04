@@ -181,7 +181,7 @@ public class MainActivity extends ActionBarActivity {
                 operator = "/";
                 if(et.getText().toString().trim().length() > 0){
                     num1 = Float.parseFloat(et.getText().toString());
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
                 }
                 whatever1 = num1;
