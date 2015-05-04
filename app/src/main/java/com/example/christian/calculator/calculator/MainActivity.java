@@ -28,8 +28,12 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         et = (EditText) findViewById(R.id.editText);
+        disableSoftInputFromAppearing(et);
         // Intent intent = getIntent();
         String score = getIntent().getStringExtra("score");
+        String yeah = getIntent().getStringExtra("yeah");
+        //whatever1 = Float.parseFloat(whatever);
+        operator =  yeah;
         et.setText(score);
         butdel=(Button) findViewById(R.id.butdel);
         but7=(Button) findViewById(R.id.but7);
@@ -222,6 +226,20 @@ public class MainActivity extends ActionBarActivity {
         if (operator.equals("/")) {
             num2 = Float.parseFloat(et.getText().toString());
             whatever2 = whatever1 / num2;
+            et.setText(Float.toString(whatever2));
+        }
+        if (operator.equals("%")) {
+            String whatever = getIntent().getStringExtra("whatever");
+            whatever1 = Float.parseFloat(whatever);
+            num2 = Float.parseFloat(et.getText().toString());
+            whatever2 = whatever1 % num2;
+            et.setText(Float.toString(whatever2));
+        }
+        if (operator.equals("^")) {
+            String whatever = getIntent().getStringExtra("whatever");
+            whatever1 = Float.parseFloat(whatever);
+            num2 = Float.parseFloat(et.getText().toString());
+            whatever2 = (float) Math.pow(whatever1,num2);
             et.setText(Float.toString(whatever2));
         }
     }

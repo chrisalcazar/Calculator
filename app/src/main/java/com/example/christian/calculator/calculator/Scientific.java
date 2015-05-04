@@ -22,11 +22,13 @@ public class Scientific extends ActionBarActivity {
     float num1=0;
     float num2=0;
     double whatever1;
+    String operator = "%";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scientific);
         et = (EditText) findViewById(R.id.editText);
+        disableSoftInputFromAppearing(et);
         // Intent intent = getIntent();
         String score = getIntent().getStringExtra("score");
         et.setText(score);
@@ -176,6 +178,34 @@ public class Scientific extends ActionBarActivity {
             }
         });
 
+        butper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operator = "%";
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
+                whatever1 = num1;
+                et.setText("");
+            }
+        });
+
+        butpwr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operator = "^";
+                if(et.getText().toString().trim().length() > 0){
+                    num1 = Float.parseFloat(et.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(), "No Input", Toast.LENGTH_LONG).show();
+                }
+                whatever1 = num1;
+                et.setText("");
+            }
+        });
+
     }
 
 
@@ -226,8 +256,12 @@ public class Scientific extends ActionBarActivity {
 
         if(id == R.id.Basic){
             String value = et.getText().toString();
+            String value2 = operator;
+            String value3 = String.valueOf(whatever1);
             Intent intent = new Intent(this,MainActivity.class);
             intent.putExtra("score", value);
+            intent.putExtra("yeah", value2);
+            intent.putExtra("whatever", value3);
             startActivity(intent);
             Toast.makeText(this, "Switched to Basic!", Toast.LENGTH_LONG).show();
         }
